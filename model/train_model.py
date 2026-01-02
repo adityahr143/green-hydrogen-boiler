@@ -1,80 +1,62 @@
 import pandas as pd
-import os
 import joblib
-
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import r2_score
 
-# -------------------------
-# Path handling
-# -------------------------
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATASET_PATH = os.path.join(BASE_DIR, "..", "dataset", "industrial_dataset.csv")
-
-# -------------------------
-# Load Dataset
-# -------------------------
-data = pd.read_csv(DATASET_PATH)
+# ---------------------------
+# Load dataset
+# ---------------------------
+data = pd.read_csv("dataset/industrial_dataset.csv")
 print("Dataset loaded successfully")
 
-# -------------------------
-# STEP 1: Handle missing values
-# -------------------------
-data = data.dropna()
-print("Dataset shape after dropping missing values:", data.shape)
-
-# -------------------------
-# STEP 2: Feature selection (Improved)
-# -------------------------
+# ---------------------------
+# Select features & target
+# ---------------------------
 X = data[
     [
-        'Main steam pressure (boiler side) (Mpa)',
-        'Main steam temperature (boiler side) (℃)',
-        'Feedwater temperature (℃)',
-        'Feedwater flow (t/h)',
-        'Coal Flow (t/h)',
-        'Boiler oxygen level (%)',
-        'Flue gas temperature (℃)',
-        'Gross Load (MW)'
+        "Feedwater temperature (℃)",
+        "Feedwater flow (t/h)",
+        "Main steam pressure (boiler side) (Mpa)",
+        "Main steam temperature (boiler side) (℃)",
+        "Coal Flow (t/h)",
+        "Boiler oxygen level (%)",
+        "Flue gas temperature (℃)",
+        "Gross Load (MW)"
     ]
 ]
 
-y = data[['Boiler Eff (%)']]
+y = data["Boiler Eff (%)"]
 
-# -------------------------
-# STEP 3: Train-test split
-# -------------------------
+# ---------------------------
+# Train-test split (optional but recommended)
+# ---------------------------
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.25, random_state=42
+    X, y, test_size=0.2, random_state=42
 )
 
-# -------------------------
-# STEP 4: Improved model configuration
-# -------------------------
-model = RandomForestRegressor(
-    n_estimators=300,
-    max_depth=15,
-    min_samples_split=10,
-    random_state=42,
-    n_jobs=-1
-)
+# ---------------------------
+# ⭐ FEATURE SCALING (VERY IMPORTANT)
+# ---------------------------
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
 
-print("Training started...")
-model.fit(X_train, y_train.values.ravel())
-print("Training completed")
+# ---------------------------
+# Train model
+# ---------------------------
+model = LinearRegression()
+model.fit(X_train_scaled, y_train)
 
-# -------------------------
-# Evaluation
-# -------------------------
-y_pred = model.predict(X_test)
-r2 = r2_score(y_test, y_pred)
-print("Model R² Score:", r2)
+# ---------------------------
+# Evaluate
+# ---------------------------
+y_pred = model.predict(X_test_scaled)
+print("Model R² Score:", r2_score(y_test, y_pred))
 
-# -------------------------
-# Save model
-# -------------------------
-MODEL_PATH = os.path.join(BASE_DIR, "model.pkl")
-joblib.dump(model, MODEL_PATH)
-
-print("Model trained and saved as model.pkl")
+# ---------------------------
+# ⭐ SAVE MODEL + SCALER TOGETHER
+# ---------------------------
+joblib.dump((model, scaler), "model/model.pkl")
+print("Model and scaler saved successfully")
