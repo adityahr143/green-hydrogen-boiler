@@ -6,21 +6,18 @@ import numpy as np
 app = Flask(__name__)
 
 # ---------------------------
-# Load trained ML model (SAFE PATH)
+# LOAD MODEL + SCALER (FIX)
 # ---------------------------
-MODEL_PATH = os.path.join(
-    os.path.dirname(__file__),
-    "model",
-    "model.pkl"
-)
-model = joblib.load(MODEL_PATH)
+model, scaler = joblib.load("model/model.pkl")
+
 
 # ---------------------------
-# MAIN PAGE (Landing Page)
+# MAIN PAGE
 # ---------------------------
 @app.route("/")
 def home():
     return render_template("index.html")
+
 
 # ---------------------------
 # PREDICTION PAGE
@@ -29,34 +26,38 @@ def home():
 def predict_page():
     return render_template("predict.html")
 
+
 # ---------------------------
-# API: Predict Boiler Efficiency
+# API: PREDICT
 # ---------------------------
 @app.route("/predict", methods=["POST"])
 def predict():
     try:
         data = request.form
 
-        features = np.array([[
-            float(data.get("feedwater_temp")),
-            float(data.get("feedwater_flow")),
-            float(data.get("steam_pressure")),
-            float(data.get("steam_temp")),
-            float(data.get("coal_flow")),
-            float(data.get("oxygen_level")),
-            float(data.get("flue_gas_temp")),
-            float(data.get("gross_load"))
-        ]])
+        features = np.array([
+            float(data["feedwater_temp"]),
+            float(data["feedwater_flow"]),
+            float(data["main_steam_pressure"]),
+            float(data["main_steam_temp"]),
+            float(data["coal_flow"]),
+            float(data["boiler_oxygen"]),
+            float(data["flue_gas_temp"]),
+            float(data["gross_load"])
+        ]).reshape(1, -1)
 
-        prediction = model.predict(features)[0]
+        #  VERY IMPORTANT
+        features_scaled = scaler.transform(features)
+
+        prediction = model.predict(features_scaled)[0]
 
         return jsonify({
-            "efficiency": round(float(prediction), 2)
+            "efficiency": round(prediction, 2)
         })
 
     except Exception as e:
-        print("PREDICTION ERROR:", e)
-        return jsonify({"error": "Prediction failed"}), 500
+        return jsonify({"error": str(e)}), 500
+
 
 # ---------------------------
 # RUN SERVER
