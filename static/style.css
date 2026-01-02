@@ -10,7 +10,7 @@
 body {
   min-height: 100vh;
   font-family: "Segoe UI", system-ui, -apple-system;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background: linear-gradient(135deg, #e6f4f1, #f0fdfa);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -149,3 +149,4 @@ button:hover,
     font-size: 1.5rem;
   }
 }
+
