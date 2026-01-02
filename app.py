@@ -30,7 +30,9 @@ def predict_page():
 # ---------------------------
 @app.route("/predict", methods=["POST"])
 def predict():
-    data = request.get_json()
+    # logic
+    return jsonify({"efficiency": round(prediction, 2)})
+
 
     try:
         features = np.array([
@@ -60,4 +62,5 @@ def predict():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
+
 
