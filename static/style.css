@@ -129,28 +129,84 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-/* ==============================
-   Professional Responsive Styling
+/* ===============================
+   Prediction Page – Professional UI
 ================================ */
 
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background: linear-gradient(135deg, #eef2f3, #d9e4f5);
+  margin: 0;
   font-family: "Segoe UI", system-ui;
+  background: linear-gradient(135deg, #eaf4f4, #f6fbff);
 }
 
-.card {
-  border-radius: 18px;
-  border: none;
+/* Center wrapper */
+.prediction-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 15px;
 }
 
-h3 {
-  font-weight: 600;
+/* Main card */
+.prediction-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 900px;
+  padding: 40px;
+  border-radius: 22px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+}
+
+/* Title */
+.title {
+  text-align: center;
+  font-weight: 700;
   color: #0f5132;
+  margin-bottom: 35px;
 }
 
-label {
+.title span {
+  font-size: 1rem;
   font-weight: 500;
+  color: #198754;
+}
+
+/* Grid layout */
+.input-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px 24px;
+}
+
+/* Input box */
+.input-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-box label {
+  font-weight: 600;
   font-size: 0.9rem;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.input-box input {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #d0d7de;
+  font-size: 0.95rem;
+}
+
+.input-box input:focus {
+  outline: none;
+  border-color: #198754;
+  box-shadow: 0 0 0 2px rgba(25,135,84,0.15);
 }
 
 /* Remove arrows */
@@ -159,34 +215,60 @@ input::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 input[type=number] {
   -moz-appearance: textfield;
 }
 
-/* Result box */
-.result-box {
-  background: #f1fff6;
+/* Button */
+.predict-btn {
+  margin-top: 40px;
+  width: 100%;
+  padding: 14px;
+  border: none;
   border-radius: 14px;
-  padding: 20px;
+  background: linear-gradient(135deg, #198754, #0f5132);
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-#resultValue {
+.predict-btn:hover {
+  opacity: 0.92;
+}
+
+/* Result */
+.result-box {
+  margin-top: 30px;
+  padding: 25px;
+  border-radius: 16px;
+  background: #f1fff6;
+  text-align: center;
+}
+
+.result-box p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.result-box h1 {
+  margin-top: 10px;
   color: #198754;
-  font-size: 2.2rem;
-  font-weight: bold;
+  font-size: 2.5rem;
 }
 
-/* Mobile optimization */
+/* Responsive */
 @media (max-width: 768px) {
-  h3 {
-    font-size: 1.4rem;
+  .prediction-card {
+    padding: 28px 22px;
   }
 
-  .card {
-    padding: 1.2rem !important;
+  .input-grid {
+    grid-template-columns: 1fr;
   }
 }
+
+
 
 
 
