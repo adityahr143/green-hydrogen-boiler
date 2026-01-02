@@ -129,68 +129,65 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-/* =========================
-   Landing Page Styling
-========================= */
+/* ==============================
+   Professional Responsive Styling
+================================ */
 
 body {
-  margin: 0;
+  background: linear-gradient(135deg, #eef2f3, #d9e4f5);
   font-family: "Segoe UI", system-ui;
 }
 
-/* HERO */
-.hero-section {
-  height: 100vh;
-  background: url("https://images.unsplash.com/photo-1581092919534-1c43e7c0e9b1")
-    center/cover no-repeat;
-  position: relative;
+.card {
+  border-radius: 18px;
+  border: none;
 }
 
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-}
-
-.hero-section .container {
-  position: relative;
-  z-index: 2;
-}
-
-/* ABOUT */
-.about-section {
-  background: #f8f9fa;
-}
-
-.info-card {
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  height: 100%;
-}
-
-.info-card h5 {
-  color: #198754;
+h3 {
   font-weight: 600;
+  color: #0f5132;
 }
 
-/* FOOTER */
-.footer {
-  background: #0f5132;
-  color: #ffffff;
+label {
+  font-weight: 500;
   font-size: 0.9rem;
 }
 
-/* RESPONSIVE */
+/* Remove arrows */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Result box */
+.result-box {
+  background: #f1fff6;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+#resultValue {
+  color: #198754;
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+/* Mobile optimization */
 @media (max-width: 768px) {
-  .hero-section {
-    text-align: center;
+  h3 {
+    font-size: 1.4rem;
   }
 
-  .hero-section h1 {
-    font-size: 2.2rem;
+  .card {
+    padding: 1.2rem !important;
   }
 }
+
+
 
 
