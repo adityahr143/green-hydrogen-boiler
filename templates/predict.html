@@ -2,90 +2,83 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Boiler Efficiency Prediction</title>
+  <title>Green Hydrogen Boiler Prediction</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- CSS -->
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 
 <body>
-<div class="container py-5">
 
-  <div class="row justify-content-center">
-    <div class="col-xl-7 col-lg-8 col-md-10">
+<div class="prediction-wrapper">
 
-      <div class="card shadow-lg p-4">
-        <h3 class="text-center mb-4">🔥 Green Hydrogen Boiler Prediction</h3>
+  <div class="prediction-card">
+    <h2 class="title">
+       Green Hydrogen Boiler <br>
+      <span>Efficiency Prediction</span>
+    </h2>
 
-        <form id="predictForm">
+    <form id="predictForm">
 
-          <div class="row g-3">
+      <div class="input-grid">
 
-            <!-- INPUTS (names NOT changed) -->
-            <div class="col-md-6">
-              <label>Feedwater Temperature (°C)</label>
-              <input type="number" name="feedwater_temp" class="form-control" required>
-            </div>
+        <div class="input-box">
+          <label>Feedwater Temperature (°C)</label>
+          <input type="number" name="feedwater_temp" required>
+        </div>
 
-            <div class="col-md-6">
-              <label>Feedwater Flow (t/h)</label>
-              <input type="number" name="feedwater_flow" class="form-control" required>
-            </div>
+        <div class="input-box">
+          <label>Feedwater Flow (t/h)</label>
+          <input type="number" name="feedwater_flow" required>
+        </div>
 
-            <div class="col-md-6">
-              <label>Main Steam Pressure (MPa)</label>
-              <input type="number" name="steam_pressure" class="form-control" required>
-            </div>
+        <div class="input-box">
+          <label>Main Steam Pressure (MPa)</label>
+          <input type="number" name="steam_pressure" required>
+        </div>
 
-            <div class="col-md-6">
-              <label>Main Steam Temperature (°C)</label>
-              <input type="number" name="steam_temp" class="form-control" required>
-            </div>
+        <div class="input-box">
+          <label>Main Steam Temperature (°C)</label>
+          <input type="number" name="steam_temp" required>
+        </div>
 
-            <div class="col-md-6">
-              <label>Coal Flow (t/h)</label>
-              <input type="number" name="coal_flow" class="form-control" required>
-            </div>
+        <div class="input-box">
+          <label>Coal Flow (t/h)</label>
+          <input type="number" name="coal_flow" required>
+        </div>
 
-            <div class="col-md-6">
-              <label>Boiler Oxygen Level (%)</label>
-              <input type="number" name="oxygen_level" class="form-control" required>
-            </div>
+        <div class="input-box">
+          <label>Boiler Oxygen Level (%)</label>
+          <input type="number" name="oxygen_level" required>
+        </div>
 
-            <div class="col-md-6">
-              <label>Flue Gas Temperature (°C)</label>
-              <input type="number" name="flue_gas_temp" class="form-control" required>
-            </div>
+        <div class="input-box">
+          <label>Flue Gas Temperature (°C)</label>
+          <input type="number" name="flue_gas_temp" required>
+        </div>
 
-            <div class="col-md-6">
-              <label>Gross Load (MW)</label>
-              <input type="number" name="gross_load" class="form-control" required>
-            </div>
-
-          </div>
-
-          <div class="d-grid mt-4">
-            <button type="submit" class="btn btn-success btn-lg">
-              Predict Efficiency
-            </button>
-          </div>
-
-        </form>
-
-        <!-- RESULT -->
-        <div id="resultBox" class="result-box mt-4 text-center d-none">
-          <h5>Predicted Boiler Efficiency</h5>
-          <h2 id="resultValue">-- %</h2>
+        <div class="input-box">
+          <label>Gross Load (MW)</label>
+          <input type="number" name="gross_load" required>
         </div>
 
       </div>
 
+      <button type="submit" class="predict-btn">
+        Predict Efficiency
+      </button>
+    </form>
+
+    <div id="resultBox" class="result-box d-none">
+      <p>Predicted Boiler Efficiency</p>
+      <h1 id="resultValue">-- %</h1>
     </div>
+
   </div>
 </div>
 
