@@ -4,64 +4,58 @@
     <meta charset="UTF-8">
     <title>Smart Boiler ML Project</title>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 </head>
 <body>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="overlay"></div>
+<div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center bg-light">
+  <div class="card shadow-lg p-4 w-100" style="max-width: 900px;">
 
-        <div class="content">
-            <h1>Smart Boiler Efficiency Prediction</h1>
+    <h2 class="text-center mb-4 text-success">
+      Boiler – Efficiency Prediction
+    </h2>
 
-            <p>
-                A machine learning based web application designed to analyze
-                industrial boiler operating parameters and predict boiler efficiency
-                in real time.
-            </p>
+    <form id="predictForm">
+      <div class="row g-3">
 
-            <div class="features">
-                <span>Machine Learning</span>
-                <span>Industrial Boiler</span>
-                <span>Regression Model</span>
-                <span>Flask Web App</span>
-            </div>
-
-            <a href="/predict-page" class="btn">
-                Go to Prediction System
-            </a>
-        </div>
-    </section>
-
-    <!-- Info Section -->
-    <section class="info">
-        <div class="card">
-            <h2>Project Objective</h2>
-            <p>
-                To develop an end-to-end machine learning system that predicts
-                boiler efficiency using real industrial operational data and
-                deploy it through a web-based interface.
-            </p>
+        <!-- Input 1 -->
+        <div class="col-12 col-md-6">
+          <label class="form-label">Feedwater Temperature (°C)</label>
+          <input type="number" class="form-control" id="feedwater_temp" required>
         </div>
 
-        <div class="card">
-            <h2>Technology Stack</h2>
-            <p>
-                Python, Flask, Machine Learning (Regression),
-                HTML, CSS, JavaScript, Industrial Dataset
-            </p>
+        <!-- Input 2 -->
+        <div class="col-12 col-md-6">
+          <label class="form-label">Feedwater Flow (t/h)</label>
+          <input type="number" class="form-control" id="feedwater_flow" required>
         </div>
 
-        <div class="card">
-            <h2>Application Area</h2>
-            <p>
-                Thermal Power Plants, Industrial Boilers,
-                Energy Optimization and Performance Monitoring
-            </p>
-        </div>
-    </section>
+        <!-- Repeat same pattern for other inputs -->
 
+        <div class="col-12">
+          <button type="submit" class="btn btn-success w-100 mt-3">
+            Predict Boiler Efficiency
+          </button>
+        </div>
+
+      </div>
+    </form>
+
+    <div class="text-center mt-4">
+      <h4 class="text-dark">
+        Predicted Efficiency:
+        <span id="result" class="text-success fw-bold">--</span>
+      </h4>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
