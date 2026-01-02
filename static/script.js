@@ -20,15 +20,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const result = await response.json();
 
+      if (!response.ok) {
+        console.error("Backend error:", result);
+        alert("Prediction failed on server");
+        return;
+      }
+
       const resultBox = document.getElementById("resultBox");
       const resultValue = document.getElementById("resultValue");
 
-      if (result.efficiency !== undefined) {
-        resultValue.innerText = result.efficiency + " %";
-        resultBox.classList.remove("d-none");
-      } else {
-        alert("Prediction failed. Check inputs.");
-      }
+      resultValue.innerText = result.efficiency + " %";
+      resultBox.classList.remove("d-none");
 
     } catch (error) {
       console.error("Prediction error:", error);
