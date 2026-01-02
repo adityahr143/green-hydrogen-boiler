@@ -10,12 +10,21 @@
 body {
   min-height: 100vh;
   font-family: "Segoe UI", system-ui, -apple-system;
-  background: linear-gradient(135deg, #e6f4f1, #f0fdfa);
+
+  /* Professional green-energy background */
+  background: linear-gradient(
+    135deg,
+    #1f2933,   /* dark slate */
+    #0f766e,   /* teal green */
+    #134e4a    /* deep green */
+  );
+
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px 15px;
+  padding: 40px 15px;
 }
+
 
 /* ===============================
    MAIN FORM CONTAINER
@@ -149,4 +158,5 @@ button:hover,
     font-size: 1.5rem;
   }
 }
+
 
