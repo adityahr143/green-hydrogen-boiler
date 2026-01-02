@@ -1,19 +1,39 @@
-document.getElementById("predictForm").addEventListener("submit", async function (e) {
+document.addEventListener("DOMContentLoaded", () => {
+
+  const form = document.getElementById("predictForm");
+
+  if (!form) {
+    console.error("Predict form not found");
+    return;
+  }
+
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const formData = new FormData(this);
+    const formData = new FormData(form);
 
-    const response = await fetch("/predict", {
+    try {
+      const response = await fetch("/predict", {
         method: "POST",
         body: formData
-    });
+      });
 
-    const result = await response.json();
+      const result = await response.json();
 
-    console.log(result); // debug
+      const resultBox = document.getElementById("resultBox");
+      const resultValue = document.getElementById("resultValue");
 
-    document.getElementById("efficiency").innerText =
-        result.efficiency !== undefined
-            ? result.efficiency + " %"
-            : "Prediction error";
+      if (result.efficiency !== undefined) {
+        resultValue.innerText = result.efficiency + " %";
+        resultBox.classList.remove("d-none");
+      } else {
+        alert("Prediction failed. Check inputs.");
+      }
+
+    } catch (error) {
+      console.error("Prediction error:", error);
+      alert("Server error. Please try again.");
+    }
+  });
+
 });
