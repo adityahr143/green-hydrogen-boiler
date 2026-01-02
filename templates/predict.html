@@ -3,74 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>Boiler Efficiency Prediction</title>
-
-    <!-- CSS -->
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  
 </head>
-<body>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
 
-    <div class="container">
-        <h1>Boiler Efficiency Prediction System</h1>
-        <p class="subtitle">
-            Machine Learning based Boiler Performance Prediction
-        </p>
+      <div class="card shadow-lg p-4">
+        <h3 class="text-center text-success mb-4">
+          Boiler Efficiency Prediction
+        </h3>
 
-        <form id="predictForm" class="form-box">
+        <form id="predictForm">
+          <div class="row g-3">
 
-            <div class="form-group">
-                <input type="number" step="any" name="feedwater_temp" required>
-                <label>Feedwater Temperature (°C)</label>
+            <div class="col-12 col-md-6">
+              <label class="form-label">Feedwater Temperature (°C)</label>
+              <input type="number" class="form-control" id="feedwater_temp" required>
             </div>
 
-            <div class="form-group">
-                <input type="number" step="any" name="feedwater_flow" required>
-                <label>Feedwater Flow (t/h)</label>
+            <div class="col-12 col-md-6">
+              <label class="form-label">Feedwater Flow (t/h)</label>
+              <input type="number" class="form-control" id="feedwater_flow" required>
             </div>
 
-            <div class="form-group">
-                <input type="number" step="any" name="steam_pressure" required>
-                <label>Main Steam Pressure (MPa)</label>
-            </div>
+            <!-- SAME pattern for all inputs -->
 
-            <div class="form-group">
-                <input type="number" step="any" name="steam_temp" required>
-                <label>Main Steam Temperature (°C)</label>
-            </div>
-
-            <div class="form-group">
-                <input type="number" step="any" name="coal_flow" required>
-                <label>Coal Flow (t/h)</label>
-            </div>
-
-            <div class="form-group">
-                <input type="number" step="any" name="oxygen_level" required>
-                <label>Boiler Oxygen Level (%)</label>
-            </div>
-
-            <div class="form-group">
-                <input type="number" step="any" name="flue_gas_temp" required>
-                <label>Flue Gas Temperature (°C)</label>
-            </div>
-
-            <div class="form-group">
-                <input type="number" step="any" name="gross_load" required>
-                <label>Gross Load (MW)</label>
-            </div>
-
-            <button type="submit" class="btn">
+            <div class="col-12">
+              <button type="submit" class="btn btn-success w-100 mt-3">
                 Predict Efficiency
-            </button>
+              </button>
+            </div>
+
+          </div>
         </form>
 
-        <div class="result-box">
-            <h2>Predicted Boiler Efficiency</h2>
-            <span id="efficiency">--</span>
+        <div class="text-center mt-4">
+          <h4>
+            Result:
+            <span id="result" class="fw-bold text-success">--</span>
+          </h4>
         </div>
+
+      </div>
     </div>
-
-    <!-- JS -->
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
-
+  </div>
+</div>
 </body>
 </html>
+
