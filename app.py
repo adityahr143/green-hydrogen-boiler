@@ -35,25 +35,36 @@ def predict():
     try:
         data = request.form
 
+        required_fields = [
+            "feedwater_temp",
+            "feedwater_flow",
+            "main_steam_pressure",
+            "main_steam_temp",
+            "coal_flow",
+            "boiler_oxygen",
+            "flue_gas_temp",
+            "gross_load"
+        ]
+
+        for field in required_fields:
+            if field not in data:
+                return jsonify({"error": f"Missing field: {field}"}), 400
+
         features = np.array([
-            float(data["feedwater_temp"]),
-            float(data["feedwater_flow"]),
-            float(data["main_steam_pressure"]),
-            float(data["main_steam_temp"]),
-            float(data["coal_flow"]),
-            float(data["boiler_oxygen"]),
-            float(data["flue_gas_temp"]),
-            float(data["gross_load"])
+            float(data.get("feedwater_temp")),
+            float(data.get("feedwater_flow")),
+            float(data.get("main_steam_pressure")),
+            float(data.get("main_steam_temp")),
+            float(data.get("coal_flow")),
+            float(data.get("boiler_oxygen")),
+            float(data.get("flue_gas_temp")),
+            float(data.get("gross_load"))
         ]).reshape(1, -1)
 
-        #  VERY IMPORTANT
         features_scaled = scaler.transform(features)
-
         prediction = model.predict(features_scaled)[0]
 
-        return jsonify({
-            "efficiency": round(prediction, 2)
-        })
+        return jsonify({"efficiency": round(prediction, 2)})
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -65,3 +76,4 @@ def predict():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
+
