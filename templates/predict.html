@@ -24,55 +24,17 @@
     </h2>
 
     <form id="predictForm">
+            <input type="number" step="any" name="feedwater_temp" required>
+            <input type="number" step="any" name="feedwater_flow" required>
+            <input type="number" step="any" name="main_steam_pressure" required>
+            <input type="number" step="any" name="main_steam_temp" required>
+            <input type="number" step="any" name="coal_flow" required>
+            <input type="number" step="any" name="boiler_oxygen" required>
+            <input type="number" step="any" name="flue_gas_temp" required>
+            <input type="number" step="any" name="gross_load" required>
 
-      <div class="input-grid">
-
-        <div class="input-box">
-          <label>Feedwater Temperature (°C)</label>
-          <input type="number" name="feedwater_temp" required>
-        </div>
-
-        <div class="input-box">
-          <label>Feedwater Flow (t/h)</label>
-          <input type="number" name="feedwater_flow" required>
-        </div>
-
-        <div class="input-box">
-          <label>Main Steam Pressure (MPa)</label>
-          <input type="number" name="steam_pressure" required>
-        </div>
-
-        <div class="input-box">
-          <label>Main Steam Temperature (°C)</label>
-          <input type="number" name="steam_temp" required>
-        </div>
-
-        <div class="input-box">
-          <label>Coal Flow (t/h)</label>
-          <input type="number" name="coal_flow" required>
-        </div>
-
-        <div class="input-box">
-          <label>Boiler Oxygen Level (%)</label>
-          <input type="number" name="oxygen_level" required>
-        </div>
-
-        <div class="input-box">
-          <label>Flue Gas Temperature (°C)</label>
-          <input type="number" name="flue_gas_temp" required>
-        </div>
-
-        <div class="input-box">
-          <label>Gross Load (MW)</label>
-          <input type="number" name="gross_load" required>
-        </div>
-
-      </div>
-
-      <button type="submit" class="predict-btn">
-        Predict Efficiency
-      </button>
-    </form>
+             <button type="submit">Predict Efficiency</button>
+        </form>
 
     <div id="resultBox" class="result-box d-none">
       <p>Predicted Boiler Efficiency</p>
@@ -85,3 +47,4 @@
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
+
