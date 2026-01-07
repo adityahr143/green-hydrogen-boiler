@@ -34,7 +34,7 @@ form,
 .card {
   background: #ffffff;
   width: 100%;
-  max-width: 900px;
+  max-width: 750px;
   padding: 40px;
   border-radius: 22px;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
@@ -165,5 +165,6 @@ label {
     font-weight: 600;
     color: #333;
 }
+
 
 
