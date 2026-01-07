@@ -24,17 +24,32 @@
     </h2>
 
     <form id="predictForm">
-            <input type="number" step="any" name="feedwater_temp" required>
-            <input type="number" step="any" name="feedwater_flow" required>
-            <input type="number" step="any" name="main_steam_pressure" required>
-            <input type="number" step="any" name="main_steam_temp" required>
-            <input type="number" step="any" name="coal_flow" required>
-            <input type="number" step="any" name="boiler_oxygen" required>
-            <input type="number" step="any" name="flue_gas_temp" required>
-            <input type="number" step="any" name="gross_load" required>
+          <label>Feedwater Temperature (°C)</label>
+          <input type="number" name="feedwater_temp" step="any" required>
 
-             <button type="submit">Predict Efficiency</button>
-        </form>
+          <label>Feedwater Flow (t/h)</label>
+          <input type="number" name="feedwater_flow" step="any" required>
+
+          <label>Main Steam Pressure (MPa)</label>
+          <input type="number" name="main_steam_pressure" step="any" required>
+
+          <label>Main Steam Temperature (°C)</label>
+          <input type="number" name="main_steam_temp" step="any" required>
+
+          <label>Coal Flow (t/h)</label>
+          <input type="number" name="coal_flow" step="any" required>
+
+          <label>Boiler Oxygen Level (%)</label>
+          <input type="number" name="boiler_oxygen" step="any" required>
+
+          <label>Flue Gas Temperature (°C)</label>
+          <input type="number" name="flue_gas_temp" step="any" required>
+
+          <label>Gross Load (MW)</label>
+          <input type="number" name="gross_load" step="any" required>
+
+          <button type="submit">Predict Efficiency</button>
+    </form>
 
     <div id="resultBox" class="result-box d-none">
       <p>Predicted Boiler Efficiency</p>
@@ -47,4 +62,5 @@
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
+
 
