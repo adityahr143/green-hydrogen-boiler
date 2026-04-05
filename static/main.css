@@ -1,157 +1,76 @@
+/* RESET */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", Tahoma, sans-serif;
-}
-
-/* HERO SECTION */
-.hero {
-    height: 100vh;
-    background: url("https://images.unsplash.com/photo-1581091870627-3b6a3b9b89a7")
-        center/cover no-repeat;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.65);
-}
-
-.content {
-    position: relative;
-    max-width: 750px;
-    text-align: center;
-    color: #fff;
-    padding: 20px;
-}
-
-.content h1 {
-    font-size: 42px;
-    margin-bottom: 20px;
-}
-
-.content p {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 25px;
-    color: #ddd;
-}
-
-.features {
-    margin-bottom: 30px;
-}
-
-.features span {
-    display: inline-block;
-    margin: 6px;
-    padding: 6px 14px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.15);
-    font-size: 13px;
-}
-
-/* BUTTON */
-.btn {
-    display: inline-block;
-    padding: 14px 30px;
-    background: #2c5364;
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 30px;
-    transition: 0.3s ease;
-}
-
-.btn:hover {
-    background: #1f3b4a;
-}
-
-/* INFO SECTION */
-.info {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    padding: 60px 40px;
-    background: #f4f6f8;
-}
-
-.card {
-    background: #fff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-.card h2 {
-    font-size: 18px;
-    margin-bottom: 12px;
-}
-
-.card p {
-    font-size: 14px;
-    color: #555;
-    line-height: 1.6;
-}
-.hero-bg {
-  background: linear-gradient(135deg, #e8f5e9, #ffffff);
-}
-
-/* =========================
-   Landing Page Styling
-========================= */
-
-body {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: "Segoe UI", system-ui;
 }
 
-/* HERO */
+/* BODY BACKGROUND (GREEN GRADIENT 🌿) */
+body {
+  background: linear-gradient(135deg, #0f2027, #2e8b57, #a8e063);
+  min-height: 100vh;
+}
+
+/* HERO SECTION */
 .hero-section {
   height: 100vh;
-  background: url("https://images.unsplash.com/photo-1581092919534-1c43e7c0e9b1")
-    center/cover no-repeat;
   position: relative;
 }
 
+/* DARK OVERLAY */
 .overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.55);
 }
 
+/* HERO CONTENT */
 .hero-section .container {
   position: relative;
   z-index: 2;
 }
 
-/* ABOUT */
-.about-section {
-  background: #f8f9fa;
+/* BUTTON */
+.btn-success {
+  background: #198754;
+  border: none;
+  border-radius: 30px;
+  transition: 0.3s;
 }
 
+.btn-success:hover {
+  background: #146c43;
+}
+
+/* ABOUT SECTION */
+.about-section {
+  background: transparent;
+}
+
+/* CARDS */
 .info-card {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.95);
   padding: 25px;
   border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
   height: 100%;
+  transition: 0.3s;
 }
 
+.info-card:hover {
+  transform: translateY(-5px);
+}
+
+/* CARD HEADINGS */
 .info-card h5 {
   color: #198754;
   font-weight: 600;
 }
 
 /* FOOTER */
-.footer {
-  background: #0f5132;
-  color: #ffffff;
-  font-size: 0.9rem;
+footer {
+  background: rgba(0, 0, 0, 0.8);
 }
 
 /* RESPONSIVE */
