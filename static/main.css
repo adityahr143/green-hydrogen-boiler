@@ -8,7 +8,7 @@
 
 /* BODY BACKGROUND (GREEN GRADIENT 🌿) */
 body {
-  background: linear-gradient(135deg, #0f2027, #2e8b57, #a8e063);
+  background: green;
   min-height: 100vh;
 }
 
